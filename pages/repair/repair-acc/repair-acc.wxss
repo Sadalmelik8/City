@@ -1,0 +1,23 @@
+.page {
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+}
+
+.res {
+  border-bottom: 1rpx #eee solid;
+}
+
+.picker {
+  display: inline-block;
+  margin-bottom: 15rpx;
+}
+
+.pic {
+  width: 33%;
+  height: 250rpx;
+}
+
+.detailText {
+  display: inline-block;
+  border: 1rpx black solid;
+}

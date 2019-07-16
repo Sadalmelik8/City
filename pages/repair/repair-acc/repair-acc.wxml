@@ -1,0 +1,91 @@
+<view class='page'>
+  <view class='res'>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      地点选择：
+      <view class="picker">
+        {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+      </view>
+    </picker>
+  </view>
+
+
+
+  <view class='res'>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      故障类别：
+      <view class="picker">
+        {{array[index]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='res'>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      紧急度：
+      <view class="picker">
+        {{array[index]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="picker">
+    故障描述：
+    <textarea class="detailText" placeholder="输入您的备注" bindblur="bindTextAreaBlur" value="{{details}}">
+    </textarea>
+
+  </view>
+  <button bindtap='pic'>上传图片</button>
+  <image src='{{src[0].src}}' class='pic' style='display:{{display[0].display}}'></image>
+  <image src='{{src[1].src}}' class='pic' style='display:{{display[1].display}}'></image>
+  <image src='{{src[2].src}}' class='pic' style='display:{{display[2].display}}'></image>
+  <image src='{{src[3].src}}' class='pic' style='display:{{display[3].display}}'></image>
+  <image src='{{src[4].src}}' class='pic' style='display:{{display[4].display}}'></image>
+  <image src='{{src[5].src}}' class='pic' style='display:{{display[5].display}}'></image>
+  <image src='{{src[6].src}}' class='pic' style='display:{{display[6].display}}'></image>
+  <image src='{{src[7].src}}' class='pic' style='display:{{display[7].display}}'></image>
+  <image src='{{src[8].src}}' class='pic' style='display:{{display[8].display}}'></image>
+</view>
+
+
+
+<!-- <view class="section">
+  <view class="section__title">普通选择器</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">多列选择器</view>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">时间选择器</view>
+  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <view class="picker">
+      当前选择: {{time}}
+    </view>
+  </picker>
+</view>
+
+<view class="section">
+  <view class="section__title">日期选择器</view>
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">省市区选择器</view>
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+    </view>
+  </picker>
+</view> -->

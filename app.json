@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/repair/repair-acc/repair-acc",
+    "pages/repair/repair",
+    "pages/home/home",
+    "pages/login/login",
+    "pages/repair/repair-del/repair-del",
+    "pages/delivery/deliverys/deliverys",
+    "pages/delivery/delivery",
+    "pages/send/send",
+    "pages/clear/clear",
+    "pages/myset/myset"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1bf4df",
+    "navigationBarTitleText": "卫医通",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#dbdbdb",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首 页",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/myhome.png"
+      },
+      {
+        "pagePath": "pages/myset/myset",
+        "text": "消 息",
+        "iconPath": "img/msg.png",
+        "selectedIconPath": "img/mymsg.png"
+      },
+      {
+        "pagePath": "pages/myset/myset",
+        "text": "我",
+        "iconPath": "img/set.png",
+        "selectedIconPath": "img/myset.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

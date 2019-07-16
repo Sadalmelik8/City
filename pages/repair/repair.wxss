@@ -1,0 +1,6 @@
+.icon-saoyisao {
+  position: fixed;
+  bottom: 200rpx;
+  right: 50rpx;
+  z-index: 100;
+}

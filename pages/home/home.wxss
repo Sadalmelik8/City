@@ -1,0 +1,20 @@
+.homes {
+  margin-top: 150rpx;
+  text-align: center;
+}
+
+.home {
+  width: 300rpx;
+  /* border: 1rpx solid black; */
+  display: inline-block;
+  margin-top: 100rpx;
+}
+
+.home image {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.home view {
+  color: rgb(180, 185, 185);
+}
