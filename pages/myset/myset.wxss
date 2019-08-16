@@ -1,0 +1,40 @@
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #0c0c0c;
+}
+
+.set {
+  margin: 0 12rpx;
+}
+
+.title {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  border-bottom: 0.5rpx #ecebeb solid;
+}
+
+.res {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  border-bottom: 0.5rpx #ecebeb solid;
+}
+
+.right {
+  float: right;
+}

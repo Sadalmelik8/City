@@ -49,7 +49,7 @@ input {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  margin-top: 250rpx;
+  margin-top: 100rpx;
   background-color: white;
 }
 

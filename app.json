@@ -1,15 +1,18 @@
 {
   "pages": [
-    "pages/repair/repair-acc/repair-acc",
-    "pages/repair/repair",
-    "pages/home/home",
     "pages/login/login",
+    "pages/login/login-set",
+    "pages/myset/myset",
     "pages/repair/repair-del/repair-del",
-    "pages/delivery/deliverys/deliverys",
+    "pages/repair/repair",
+    "pages/repair/repair-acc/repair-acc",
     "pages/delivery/delivery",
+    "pages/home/home",
+    "pages/delivery/deliverys/deliverys",
     "pages/send/send",
-    "pages/clear/clear",
-    "pages/myset/myset"
+    "pages/send/send-acc/send-acc",
+    "pages/send/send-del/send-del",
+    "pages/clear/clear"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,12 +30,6 @@
         "text": "首 页",
         "iconPath": "img/home.png",
         "selectedIconPath": "img/myhome.png"
-      },
-      {
-        "pagePath": "pages/myset/myset",
-        "text": "消 息",
-        "iconPath": "img/msg.png",
-        "selectedIconPath": "img/mymsg.png"
       },
       {
         "pagePath": "pages/myset/myset",

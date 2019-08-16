@@ -16,4 +16,4 @@
 <view class='les' wx:for="{{items}}">
   <view class='index'>{{index+1}}</view>
   <view class='sampleno'>{{item}}</view>
-</view>
+</view> 

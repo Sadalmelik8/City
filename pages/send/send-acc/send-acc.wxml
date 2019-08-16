@@ -1,5 +1,5 @@
 <view class='page'>
-  故障描述：
+  污物报告：
   <view class="picker">
 
   </view>
@@ -27,7 +27,7 @@
 
 <view class='res'>
   <picker bindchange="bindPickerChange1" value="{{index}}" range="{{arraytype}}">
-    故障类别：
+    污物类别：
     <view class="picker">
       {{arraytype[index1]}}
     </view>

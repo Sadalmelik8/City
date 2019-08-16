@@ -331,7 +331,6 @@ Page({
   bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     if (e.detail.column == 0) {
-
       var arr = [];
       var arrs = [];
       var arrbm = [];
@@ -357,7 +356,6 @@ Page({
         last: e.detail.value,
         'multiIndex[0]': e.detail.value,
       })
-      console.log(arrs);
     }
 
     if (e.detail.column == 1) {
@@ -382,7 +380,6 @@ Page({
         'multiArrayss[2]': arrs,
         'multiIndex[1]': e.detail.value,
       })
-      console.log(arrs);
     }
     if (e.detail.column == 2) {
       this.setData({
@@ -438,7 +435,7 @@ Page({
             bases.push('data:image/png;base64,' + res.data);
             if (bases.length == that.data.lock.length) {
               wx.request({
-                url: this.data.url + 'svr=MP_00012&fsession=' +
+                url: this.data.url + 'svr=MP_00024&fsession=' +
                   app.globalData.fsession +
                   "&username=" +
                   app.globalData.username,
@@ -449,9 +446,7 @@ Page({
                     that.data.multiArrayss[1][that.data.multiIndex[1]] + '  ' +
                     that.data.multiArrayss[2][that.data.multiIndex[2]], //地点
 
-                  category: that.data.arraytype[that.data.index1], //故障类别
                   level: that.data.arraylevel[that.data.index2], //紧急度
-                  repairman: that.data.array[that.data.index3], //维修人
                   bfpic: bases, //图片
                 },
                 header: {
@@ -460,10 +455,10 @@ Page({
                 method: 'post',
                 success: function(res) {
                   wx.showToast({
-                    title: '报修成功',
+                    title: '报告成功',
                   })
                   wx.redirectTo({
-                    url: '../repair',
+                    url: '../send',
                   })
                 },
                 fail: function(res) {
@@ -476,7 +471,7 @@ Page({
       }
       if (that.data.lock.length == 0) {
         wx.request({
-          url: this.data.url + 'svr=MP_00012&fsession=' +
+          url: this.data.url + 'svr=MP_00024&fsession=' +
             app.globalData.fsession +
             "&username=" +
             app.globalData.username,
@@ -487,9 +482,7 @@ Page({
               that.data.multiArrayss[1][that.data.multiIndex[1]] + '  ' +
               that.data.multiArrayss[2][that.data.multiIndex[2]], //地点
 
-            category: that.data.arraytype[that.data.index1], //故障类别
             level: that.data.arraylevel[that.data.index2], //紧急度
-            repairman: that.data.array[that.data.index3], //维修人
             bfpic: '', //图片
           },
           header: {
@@ -498,10 +491,10 @@ Page({
           method: 'post',
           success: function(res) {
             wx.showToast({
-              title: '报修成功',
+              title: '报告成功',
             })
             wx.redirectTo({
-              url: '../repair',
+              url: '../send',
             })
           },
           fail: function(res) {
@@ -511,7 +504,7 @@ Page({
       }
     } else {
       wx.showToast({
-        title: '报修内容或报修地点不能为空',
+        title: '报告内容或地点不能为空',
         icon: 'none'
       })
     }

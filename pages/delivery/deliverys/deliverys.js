@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://192.168.5.58:42485/miniprogram/?',
+    url: 'http://192.168.5.85:42485/miniprogram/?',
     serialno: '',
     status: '',
     operator: '',

@@ -1,7 +1,7 @@
 <view style="display:{{imgstyle}};">
 <view class='page'>
   <view class="pickers">
-    故障描述：
+    污物报告：
   </view>
   <text class="detailText">
 {{detail}}
@@ -22,14 +22,6 @@
     {{map}}
   </view>
 </view>
-
-<view class='res'>
-  <view class='title'>故障类别：</view>
-  <view class="picker">
-    {{category}}
-  </view>
-</view>
-
 <view class='res'>
   <view class='title'>紧急度：</view>
   <view class="picker">

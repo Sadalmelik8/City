@@ -1,0 +1,18 @@
+<view class='container'>
+  <text>设置密码</text>
+  <form bindsubmit="formBindsubmit" bindreset="formReset">
+    <view class='login'>
+      <input name="userName" placeholder="输入新密码" bindinput='mobileInput' />
+    </view>
+    <view class='login'>
+      <input name="psd" placeholder="确认新密码" bindinput='psdInput' />
+    </view>
+    <view class='login'>
+      <input name="psd" placeholder="输入验证码" bindinput='smcode' />
+    </view>
+    <view class='logins'>
+      <button class='go' bindtap="loginBtnClick">确认</button>
+    </view>
+  </form>
+  <view class='alert'>{{tip}}</view>
+</view>

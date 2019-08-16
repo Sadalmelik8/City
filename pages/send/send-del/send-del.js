@@ -67,7 +67,7 @@ Page({
     var that = this;
     var app = getApp();
     wx.request({
-      url: this.data.url + 'svr=MP_00016&fsession=' +
+      url: this.data.url + 'svr=MP_00028&fsession=' +
         app.globalData.fsession +
         "&username=" +
         app.globalData.username,
@@ -84,13 +84,13 @@ Page({
           that.setData({
             detail: res.data.ret[0].detail, //故障描述
             map: res.data.ret[0].location, //地点
-            category: res.data.ret[0].category, //类别
+            // category: res.data.ret[0].category, //类别
             level: res.data.ret[0].level, //紧急度
-            apltime: res.data.ret[0].apltime, //报修时间
-            applicant: res.data.ret[0].applicant, //报修人
-            cell_no: res.data.ret[0].aplcell, //维修人联系方式
+            apltime: res.data.ret[0].spotime, //报修时间
+            applicant: res.data.ret[0].spoter, //报修人
+            // cell_no: res.data.ret[0].aplcell, //维修人联系方式
             src: res.data.ret[0].bfpic, //图片
-            repairman: res.data.ret[0].repairman, //接修人
+            repairman: res.data.ret[0].disposer, //接修人
           })
           for (var i = 0; i < res.data.ret[0].bfpic.length; i++) {
             if (i == 0) {

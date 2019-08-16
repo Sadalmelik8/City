@@ -5,21 +5,24 @@ Page({
    */
   data: {
     background: 'block',
-    color: '#1bf4df',
-    url: 'http://192.168.5.58:42485/miniprogram/?',
+    url: 'http://192.168.5.85:42485/miniprogram/?',
     items: [],
-    jiedan: '',
-    funcjiedan: 'jiedan',
     imgsrc: '',
     style: 'none',
-    imgstyle: ''
+    imgstyle: '',
+    nums: 0,
+    flag: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    if (options.flag) {
+      this.setData({
+        flag: options.flag,
+      })
+    }
   },
 
   /**
@@ -29,40 +32,70 @@ Page({
     var that = this;
     var app = getApp();
     wx.request({
-      url: this.data.url + 'svr=MP_00002&fsession=' +
+      url: that.data.url + 'svr=MP_00002&fsession=' +
         app.globalData.fsession +
         "&username=" +
         app.globalData.username,
       data: {
         cell_no: app.globalData.cell_no,
+        flag: that.data.flag,
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       method: 'get',
       success: function(res) {
-        if (!res.data.ret[0].id) {
+        if (isNaN(res.data.ret[0].id)) {
           var num = res.data.ret.length;
-          var arr = [];
-          for (var i = 0; i < num; i++) {
-            arr.push(res.data.ret[i]);
-          }
-          if (res.data.ret[0].status == '已提交') {
-            that.setData({
-              jiedan: '接单'
-            })
+          if (num == that.data.items.length) {
+
           } else {
-            that.setData({
-              jiedan: '二维码',
-              funcjiedan: 'goscan',
-              color: '#cfc9c9',
+            wx.showLoading({
+              title: '玩命加载中',
             })
+            var i = '';
+            for (i = that.data.nums + i; i < num; i++) {
+              if ((i + 1) % 10 != 0) {
+                if (res.data.ret[i].status == '已提交') {
+                  res.data.ret[i].deliver = '接单';
+                  res.data.ret[i].acc_no = 'jiedan';
+                  res.data.ret[i].del_no = '#1bf4df'
+                } else {
+                  res.data.ret[i].deliver = '二维码';
+                  res.data.ret[i].acc_no = 'goscan';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  background: 'none',
+                  items: that.data.items,
+                })
+              } else {
+                if (res.data.ret[i].status == '已提交') {
+                  res.data.ret[i].deliver = '接单';
+                  res.data.ret[i].acc_no = 'jiedan';
+                  res.data.ret[i].del_no = '#1bf4df'
+                } else {
+                  res.data.ret[i].deliver = '二维码';
+                  res.data.ret[i].acc_no = 'goscan';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  nums: that.data.nums + 10,
+                  background: 'none',
+                  items: that.data.items,
+                })
+                break;
+              }
+            }
           }
+        } else {
           that.setData({
-            background: 'none',
-            items: arr,
+            background: 'block',
           })
         }
+        wx.hideLoading();
       }
     })
   },
@@ -84,22 +117,28 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.showLoading({
+      title: '玩命加载中',
+    })
+    this.setData({
+      nums: 0,
+      items: [],
+    })
+    this.onReady();
+    wx.hideLoading();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.onReady();
   },
 
   /**
@@ -118,13 +157,14 @@ Page({
   jiedan: function(e) {
     var that = this;
     var app = getApp();
+    var idx = e.target.dataset.index;
     wx.request({
       url: this.data.url + 'svr=MP_00004&fsession=' +
         app.globalData.fsession +
         "&username=" +
         app.globalData.username,
       data: {
-        serialno: e.target.id,
+        serialno: e.currentTarget.id,
         cell_no: app.globalData.cell_no,
       },
       header: {
@@ -135,14 +175,46 @@ Page({
           wx.showToast({
               title: '接单成功',
             }),
-            that.setData({
-              jiedan: '二维码',
-              funcjiedan: 'goscan',
-              color: '#cfc9c9',
+            wx.request({
+              url: that.data.url + 'svr=MP_00002&fsession=' +
+                app.globalData.fsession +
+                "&username=" +
+                app.globalData.username,
+              data: {
+                cell_no: app.globalData.cell_no,
+                flag: that.data.flag,
+              },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              method: 'get',
+              success: function(res) {
+                if (isNaN(res.data.ret[0].id)) {
+                  var num = res.data.ret.length;
+                  var arr = [];
+                  for (var i = 0; i < num; i++) {
+                    if (res.data.ret[i].status == '已提交') {
+                      res.data.ret[i].deliver = '接单';
+                      res.data.ret[i].acc_no = 'jiedan';
+                      res.data.ret[i].del_no = '#1bf4df'
+                    } else {
+                      res.data.ret[i].deliver = '二维码';
+                      res.data.ret[i].acc_no = 'goscan';
+                      res.data.ret[i].del_no = '#cfc9c9'
+                    }
+                    arr.push(res.data.ret[i]);
+                  }
+                  that.setData({
+                    background: 'none',
+                    items: arr,
+                  })
+                }
+              }
             })
         } else {
           wx.showToast({
             title: '已被其他配送人员接单',
+            icon: 'none'
           })
           wx.redirectTo({
             url: '../delivery/delivery',
@@ -210,7 +282,7 @@ Page({
       success: function(res) {
         that.setData({
           imgsrc: res.data.ret[0].qrcode,
-          style: 'block',
+          style: 'flex',
           imgstyle: 'none'
         })
       }
@@ -224,5 +296,5 @@ Page({
       style: 'none',
       imgstyle: 'block'
     })
-  }
+  },
 })

@@ -1,1 +1,30 @@
-myset
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{username}}</text>
+    </block>
+  </view>
+</view>
+
+<view class="set">
+  <view class="title">我发布/完成的任务</view>
+
+  <view class="res" bindtap="delivery">
+    <text class="left">我的标本配送</text>
+    <text class="right">></text>
+  </view>
+  <view class="res" bindtap="repair">
+    <text class="left">我的报修维修</text>
+    <text class="right">></text>
+  </view>
+  <view class="res" bindtap="send">
+    <text class="left">我的污物报告</text>
+    <text class="right">></text>
+  </view>
+  <view class="res" bindtap="clear">
+    <text class="left">我的被服洗涤</text>
+    <text class="right">></text>
+  </view>
+</view>
