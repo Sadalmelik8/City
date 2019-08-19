@@ -182,13 +182,13 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        if (res.data.status == 'err') {
+        if (res.data.ret.id == '3') {
           that.setData({
-            tip: '工号或密码不正确！'
+            tips: '工号或密码不正确！'
           })
         } else if (res.data.ret.active == '1') {
           that.setData({
-            tip: '未激活的用户'
+            tips: '未激活的用户'
           })
           wx.navigateTo({
             url: '../ login / login - set ? cell_no = ' + this.data.mobile
@@ -198,7 +198,7 @@ Page({
           app.globalData.username = res.data.ret.username;
           app.globalData.cell_no = res.data.ret.cell_no;
           that.setData({
-            tip: '登陆成功'
+            tips: '登陆成功'
           })
           wx.switchTab({
             url: '../home/home'

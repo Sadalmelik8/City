@@ -5,7 +5,7 @@ Page({
    */
   data: {
     background: 'block',
-    url: 'http://192.168.5.85:42485/miniprogram/?',
+    url: 'https://dev.wytsoft.com/miniprogram/?',
     items: [],
     imgsrc: '',
     style: 'none',

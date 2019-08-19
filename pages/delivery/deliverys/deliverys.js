@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://192.168.5.85:42485/miniprogram/?',
+    url: 'https://dev.wytsoft.com/miniprogram/?',
     serialno: '',
     status: '',
     operator: '',
