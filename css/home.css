@@ -1,0 +1,301 @@
+﻿
+body {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*div {
+    float: left;
+}*/
+*{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+.left {
+    height: 860px;
+    width: 260px;
+    background-color: #42485A;
+}
+
+.top {
+    width: 1920px;
+    height: 65px;
+    background-color: #42485A;
+}
+
+    .top span {
+        color: white;
+        font-size: 16px;
+        line-height: 65px;
+        margin-left: 30px;
+    }
+
+    .top a {
+        color: white;
+        line-height: 65px;
+        margin-left: 20px;
+    }
+
+#messge {
+    font-size: 16px;
+    margin-left: 1400px;
+    cursor:pointer;
+}
+
+table tr td {
+}
+
+.tree {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: white;
+    background-color: #42485A;
+}
+    /*隐藏input*/
+    .tree li input {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        z-index: 2;
+        cursor: pointer;
+        height: 1em;
+        width: 1em;
+        top: 0;
+    }
+    /*所有菜单项设置统一样式*/
+    .tree li {
+        position: relative;
+        list-style: none;
+    }
+    /*一级菜单加下边线*/
+    .tree > li {
+        border-bottom: 1px solid black;
+    }
+    /*给有子菜单的菜单项添加背景图标*/
+    .tree li label {
+        max-width: 999px;
+        cursor: pointer;
+        display: block;
+        margin: 0 0 0 -50px;
+        padding: 15px 10px 15px 70px;
+        /*background: url(img/xia.png) no-repeat right center;*/
+        background-position: 95% 50%;
+        /*文本不换行*/
+        white-space: nowrap;
+        overflow: hidden;
+        /*多余内容以...表示*/
+        text-overflow: ellipsis;
+    }
+
+        /*鼠标悬停 菜单特效*/
+        .tree li label:hover, li label:focus {
+            background-color: #323644;
+            color: #fff;
+        }
+    /*清除所有展开的子菜单的display*/
+    .tree li input + ol {
+        display: none;
+    }
+    /*当input被选中时，给所有展开的子菜单设置样式*/
+    .tree input:checked + ol {
+        padding-left: 18px;
+        height: auto;
+        display: block;
+    }
+
+    /*.tree input:checked + ol > li {
+                    height: auto;
+                }*/
+    /*末层菜单为A标签，设置样式*/
+    .tree li.file a {
+        margin: 0 -10px 0 -50px;
+        padding: 15px 20px 15px 70px;
+        text-decoration: none;
+        display: block;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+        /*鼠标悬停 字体特效*/
+        .tree li.file a:hover, li.file a:focus {
+            background-color: #323644;
+            color: #fff;
+        }
+    /*不同层级的菜单字体大小不同*/
+    .tree .folderOne {
+        font-size: 15px;
+    }
+
+    .tree .folderTwo {
+        font-size: 14px;
+    }
+
+    .tree .folderThree {
+        font-size: 12px;
+    }
+
+
+.center {
+    width: 1628px;
+    height: 860px;
+}
+
+    .center iframe {
+        height: 855px;
+        width: 100%;
+        border: none;
+    }
+
+
+table td {
+    vertical-align: top
+}
+
+#hide {
+    width: 20px;
+    height: 20px;
+}
+
+#drop{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    top: 68px;
+    left: 1505px;
+    height: 330px;
+    width: 400px;
+    border: 1px solid #777;
+    background: #f3f3f3;
+    display:inline-block;
+}
+.date{
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    font-size: 14px;
+    color: #555;
+    border-right: 1px solid #777;
+    text-align: center;
+    line-height: 30px;
+}
+.operation{
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 249px;
+    height:30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    text-overflow : ellipsis;
+    overflow:hidden;
+    white-space:nowrap
+}
+.news{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 400px;
+    height: 30px;
+   font-size: 0;
+    line-height: 30px;
+    border-bottom: 1px solid #777;
+    cursor:pointer;
+}
+.unread{
+    display: inline-block;
+    width: 199px;
+    text-align: center;
+    border-right: 1px solid #777;
+    color: #555;
+    font-size: 16px;
+    background: #fff;
+}
+.read{
+    display: inline-block;
+    width: 200px;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    background-color: #c9c9c9;
+}
+#data{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 400px;
+    height: 300px;
+    font-size: 0;
+    margin-top: 30px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background-color: #fff;
+}
+.icon{
+    display: inline-block;
+    width: 400px;
+    height: 30px;
+}
+.icon:hover{
+    background: #eeeeee;
+    cursor:pointer;
+}
+.icon>*{
+    border-bottom: 1px solid #777;
+    vertical-align: middle;
+}
+.remind{
+    position: relative;
+    right: 2px;
+    top: -8px;
+    width: 12px;
+    height:12px;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 12px;
+    font-size: 6px;
+    background: red;
+    color: #fff;
+}
+#shade{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 920px;
+    background: transparent;
+}
+#reset{
+    cursor:pointer;
+}
+#user{
+    cursor:pointer;
+    font-size: 15px;
+}
+#user:hover{
+    font-size: 16px;
+}
+#exit{
+    font-size: 15px;
+}
+#exit:hover{
+    font-size: 16px;
+    cursor:pointer;
+}

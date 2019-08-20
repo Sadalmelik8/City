@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>卫医通后勤管理系统</title>
+    <link rel="shortcut icon" href="favicon.jpg">
+    <link href="css/home.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!--<script src="js/home.js"></script>-->
+</head>
+<body>
+    <!--导航栏-->
+    <div id="shade">
+        <ul id="drop" style=" display: none;">
+            <li class="news">
+                <span class="unread">未读消息</span>
+                <span class="read">已读消息</span>
+            </li>
+            <li id="data">
+                <div class="icon"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="top">
+        <!--<img src="img/Logo.jpg" />-->
+        <span>卫医通后勤管理系统</span>
+        <!--有消息则变色提醒-->
+        <a id="messge">
+            消息提醒
+            <div class="remind" style="display: none"></div>
+        </a>
+
+        <!--根据登录uid获取当前用户信息-->
+        <a id="user">当前用户</a>
+        <!--安全退出，清除cooking等文件-->
+        <a id="exit" onclick="clearAllCookie()">安全退出</a>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <!--菜单栏-->
+                <div class="left">
+                    <!--列表选项-->
+                    <ol class="tree">
+                        <!--服务管理-->
+                        <!--<li>
+                            <label for="folder1" class="folderOne">服务管理</label> <input type="checkbox" id="folder1" />
+                            <ol>
+                                <li class="file folderTwo"><a href="servicelogs.html" target="iframe1">查看服务</a></li>
+                                <li class="file folderTwo"><a href="select.html" target="iframe1">查询服务</a></li>
+                                <li class="file folderTwo"><a href="insert.html" target="iframe1">新增服务</a></li>
+                                <li class="file folderTwo"><a href="configurationservice.html" target="iframe1">配置服务</a></li>
+                                <li class="file folderTwo"><a href="upload.html" target="iframe1">上传服务</a></li>
+                            </ol>
+                        </li>-->
+                        <!--后勤管理-->
+                        <li>
+                            <label for="folder3" class="folderOne">后勤管理</label> <input type="checkbox" id="folder3" />
+                            <ol>
+                                <li class="file folderTwo"><a href="submit.html" target="iframe1">标本配送</a></li>
+
+                                <li class="file folderTwo"><a href="" target="iframe1">报修维修</a></li>
+                                <li class="file folderTwo"><a href="" target="iframe1">污物报告</a></li>
+                                <li class="file folderTwo"><a href="" target="iframe1">被服洗涤</a></li>
+                            </ol>
+                        </li>
+                        <!--知识库-->
+                        <!--<li>
+                            <label for="folder4" class="folderOne">知识库</label> <input type="checkbox" id="folder4" />
+                            <ol>
+                                <li class="file folderTwo"><a href="repository.html" target="iframe1">知识库总览</a></li>
+                                <li class="file folderTwo"><a href="augment.html" target="iframe1">添加知识点</a></li>
+                            </ol>
+                        </li>-->
+                        <!--设置-->
+                        <li>
+                            <label for="folder2" class="folderOne">设置</label> <input type="checkbox" id="folder2" />
+                            <ol>
+                                <li class="file folderTwo"><a href="javascript:void(0)">用户设置</a></li>
+                                <li class="file folderTwo"><a href="javascript:void(0)">系统设置</a></li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </td>
+            <td class="td">
+                <!--<a href="javascript:void(0)" id="hide" onclick="hide()">收起</a>-->
+                <!--<a href="javascript:void(0)" id="hide" onclick="hide()">-->
+                <img src="img/left.png" id="hide" onclick="hide()" />
+                <!--</a>-->
+            </td>
+            <td>
+                <!--内容显示页-->
+                <div class="center">
+                    <iframe name="iframe1" src="" scrolling="auto"></iframe>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
