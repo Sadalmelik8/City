@@ -1,0 +1,92 @@
+.log {
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  border-bottom: 1rpx black solid;
+}
+
+.serialno {
+  font-size: 35rpx;
+  color: royalblue;
+  border-bottom: 1rpx black solid;
+}
+
+.level {
+  width: 40%;
+  display: inline-block;
+  font-size: 25rpx;
+  color: red;
+}
+
+.dept {
+  width: 35%;
+  display: inline-block;
+  font-size: 25rpx;
+}
+
+.status {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 25%;
+}
+
+.operator {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 40%;
+}
+
+.opt_no {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 60%;
+}
+
+.optime {
+  font-size: 25rpx;
+  display: inline-block;
+  width: 100%;
+}
+
+.arrtime {
+  font-size: 25rpx;
+  display: inline-block;
+  width: 100%;
+}
+
+.accepter {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 40%;
+}
+
+.acc_no {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 60%;
+}
+
+.acctime {
+  font-size: 25rpx;
+  display: inline-block;
+  width: 100%;
+}
+
+.les {
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  border-bottom: 1rpx #a7a0a0 dashed;
+}
+
+.sampleno {
+  display: inline-block;
+  font-size: 25rpx;
+  color: #99bfc4;
+  width: 80%;
+}
+
+.index {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 20%;
+  text-align: center;
+}

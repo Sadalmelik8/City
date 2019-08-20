@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'https://dev.wytsoft.com/miniprogram/?',
+    url: 'http://39.106.134.196/miniprogram/?',
     src: [],
     display: [{
         display: 'none'

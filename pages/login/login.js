@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://192.168.5.85:42485/miniprogram/?',
+    url: 'http://39.106.134.196/miniprogram/?',
     rnd: '',
     std: '获取验证码',
     mobile: '',

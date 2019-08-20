@@ -6,7 +6,7 @@ Page({
   data: {
     background: 'block',
     color: '#1bf4df',
-    url: 'https://dev.wytsoft.com/miniprogram/?',
+    url: 'http://39.106.134.196/miniprogram/?',
     items: [],
     jiedan: '',
     funcjiedan: 'jiedan',

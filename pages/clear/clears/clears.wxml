@@ -1,0 +1,19 @@
+<view class='log'>
+  <view class='serialno'>{{serialno}}</view>
+  <view class='level'>紧急度：{{level}}</view>
+  <view class='dept'>科室：{{dept}}</view>
+  <view class='status'>状态：{{status}}</view>
+  <view class='operator'>提交人：{{operator}}</view>
+  <view class='opt_no' bindtap='opt_no'>联系方式：{{opt_no}}</view>
+  <view class='optime'>标本提交时间：{{optime}}</view>
+  <view class='arrtime'>要求送达时间：{{arrtime}}</view>
+  <view class='accepter'>接收人：{{accepter}}</view>
+  <view class='acc_no' bindtap='acc_no'>联系方式：{{acc_no}}</view>
+  <view class='acctime'>标本送达时间：{{acctime}}</view>
+  <view></view>
+  <view></view>
+</view>
+<view class='les' wx:for="{{items}}">
+  <view class='index'>{{index+1}}</view>
+  <view class='sampleno'>{{item}}</view>
+</view> 
