@@ -18,7 +18,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    var app = getApp();
+    console.log(app.globalData.profession)
   },
 
   /**
@@ -63,24 +64,83 @@ Page({
 
   },
   delivery: function(e) {
+    var app = getApp();
+    for (var i = 0; i < app.globalData.profession.length; i++) {
+      if (app.globalData.profession[i] == 1 || app.globalData.profession[i] == 11) {
+        wx.navigateTo({
+          url: '../delivery/delivery',
+        })
+        return;
+      } 
+      else if (app.globalData.profession[i]==0){
 
-    wx.navigateTo({
-      url: '../delivery/delivery',
-    })
+        wx.navigateTo({
+          url: '../delivery/deliverytj/deliverytj',
+        })
+        return;
+      }
+      else{
+        wx.showToast({
+          title: '你无权进入此模块',
+          icon: 'none',
+        })
+      }
+    }
   },
   repair: function(e) {
-    wx.navigateTo({
-      url: '../repair/repair',
-    })
+    var app = getApp();
+    for (var i = 0; i < app.globalData.profession.length; i++) {
+      if (app.globalData.profession[i] == 0 || app.globalData.profession[i] == 2 || app.globalData.profession[i] == 22) {
+        wx.navigateTo({
+          url: '../repair/repair',
+        })
+        return;
+      } else if (i == app.globalData.profession.length - 1) {
+        wx.showToast({
+          title: '你无权进入此模块',
+          icon: 'none',
+        })
+      }
+    }
+
   },
   send: function(e) {
-    wx.navigateTo({
-      url: '../send/send',
-    })
+    var app = getApp();
+    for (var i = 0; i < app.globalData.profession.length; i++) {
+      if (app.globalData.profession[i] == 0 || app.globalData.profession[i] == 3 || app.globalData.profession[i] == 33) {
+        wx.navigateTo({
+          url: '../send/send',
+        })
+        return;
+      } else if (i == app.globalData.profession.length - 1) {
+        wx.showToast({
+          title: '你无权进入此模块',
+          icon: 'none',
+        })
+      }
+    }
+
   },
   clear: function(e) {
-    wx.navigateTo({
-      url: '../clear/clear',
-    })
+    var app = getApp();
+    for (var i = 0; i < app.globalData.profession.length; i++) {
+      if (app.globalData.profession[i] == 0 || app.globalData.profession[i] == 4 || app.globalData.profession[i] == 44) {
+        if (app.globalData.type == 0) {
+          wx.navigateTo({
+            url: '../clear/cleardept/cleardept',
+          })
+        } else if (app.globalData.type == 1) {
+          wx.navigateTo({
+            url: '../clear/clears-room/clears-room',
+          })
+        }
+        return;
+      } else if (i == app.globalData.profession.length - 1) {
+        wx.showToast({
+          title: '你无权进入此模块',
+          icon: 'none',
+        })
+      }
+    }
   }
 })

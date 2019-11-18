@@ -4,13 +4,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     pwd: '',
     pwds: '',
     smscode: '',
     tip: '',
     mobile: '',
-    fsession:'',
+    fsession: '',
+    yzm: '获取验证码',
+    rnd: '',
+    num: '',
+    yzmbtn: 'yzmbtn',
   },
 
   /**
@@ -71,21 +75,25 @@ Page({
   onShareAppMessage: function() {
 
   },
+
   mobileInput: function(e) {
     this.setData({
       pwd: e.detail.value,
     })
   },
+
   psdInput: function(e) {
     this.setData({
       pwds: e.detail.value,
     })
   },
+
   smcode: function(e) {
     this.setData({
       smscode: e.detail.value,
     })
   },
+
   loginBtnClick: function(e) {
     var that = this;
     var app = getApp();
@@ -93,8 +101,7 @@ Page({
       wx.request({
         url: this.data.url + 'svr=MP_00038&cell_no=' +
           this.data.mobile + '&smscode=' + this.data.smscode +
-          '&password=' + this.data.pwd + '&fsession=' + this.data.fsession,
-        data: {},
+          '&password=' + this.data.pwd + '&fsession=' + app.globalData.fsession,
         header: {
           'content-type': 'application/json' // 默认值
         },
@@ -105,7 +112,7 @@ Page({
             })
           } else {
             that.setData({
-              tip: '登陆成功'
+              tip: '激活成功'
             })
             wx.navigateTo({
               url: '../login/login'
@@ -118,5 +125,41 @@ Page({
         tip: '两次输入的密码不同！'
       })
     }
+  },
+  yzmbtn: function() {
+    var that = this;
+    var app = getApp();
+    this.setData({
+      rnd: Math.floor(Math.random() * 100000),
+      num: 60
+    })
+    wx.request({
+      url: this.data.url + 'svr=MP_00001&rnd=' + this.data.rnd + '&mobile=' + this.data.mobile,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function(res) {
+        setInterval(function() {
+          var numVal = that.data.num - 1;
+          if (numVal > 0) {
+            that.setData({
+              num: numVal,
+              yzm: '(' + numVal + ')' + '秒后可再次获取',
+              yzmbtn: '',
+            });
+          } else {
+            that.setData({
+              std: '获取验证码',
+              yzmBtnClick: 'yzmBtnClick',
+            })
+            clearInterval(that.data.num)
+          }
+        }, 1000);
+        app.globalData.fsession = res.data.ret.fsession;
+        that.setData({
+          tip: '成功获取验证码，收到短信后请输入'
+        })
+      }
+    })
   }
 })

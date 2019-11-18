@@ -18,7 +18,7 @@
 }
 
 .dept {
-  width: 35%;
+  width: 65%;
   display: inline-block;
   font-size: 25rpx;
 }
@@ -26,13 +26,14 @@
 .status {
   display: inline-block;
   font-size: 25rpx;
-  width: 25%;
+  width: 35%;
 }
 
 .operator {
   display: inline-block;
   font-size: 25rpx;
-  width: 40%;
+  width: 35%;
+  color: #4f82b3;
 }
 
 .opt_no {
@@ -44,7 +45,8 @@
 .optime {
   font-size: 25rpx;
   display: inline-block;
-  width: 100%;
+  width: 65%;
+  color: #a89d9d;
 }
 
 .arrtime {
@@ -82,6 +84,7 @@
   font-size: 25rpx;
   color: #99bfc4;
   width: 80%;
+  text-align: center;
 }
 
 .index {

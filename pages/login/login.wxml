@@ -1,34 +1,46 @@
+<view class='container'>卫医通后勤管理系统</view>
 <!-- 工号密码登录 -->
 <view class='container' style="display:{{style1}}">
   <form bindsubmit="formBindsubmit" bindreset="formReset">
     <view class='login1'>
+      <image src="/img/user.png" class="user"></image>
       <input name="userName" placeholder="输入工号" bindinput='mobileInputs' />
     </view>
     <view class='login1'>
-      <input name="psd" placeholder="输入密码" bindinput='psdInputs' />
+      <image src="/img/pwd.png" class="user"></image>
+      <input name="psd" placeholder="输入密码" bindinput='psdInputs' type='password'/>
+    </view>
+    <!-- <view class='alert'>{{tips}}</view> -->
+    <view class="change" bindtap="change">
+      {{change}}
     </view>
     <view class='logins'>
       <button class='go' bindtap="loginBtnClicks">登录</button>
     </view>
   </form>
-  <view class='alert'>{{tips}}</view>
 </view>
 <!-- 手机号验证码登录 -->
 <view class='container' style="display:{{style}}">
   <form bindsubmit="formBindsubmit" bindreset="formReset">
     <view class='login'>
-      <input name="userName" placeholder="输入手机号" bindinput='mobileInput' />
+      <image src="/img/user.png" class="user"></image>
+      <input name="userName" placeholder="输入手机号" bindinput='mobileInput' type="digit" />
       <button class='yzm' bindtap="{{yzmBtnClick}}">{{std}}</button>
     </view>
     <view class='login'>
-      <input name="psd" placeholder="输入验证码" bindinput='psdInput' />
+      <image src="/img/pwd.png" class="user"></image>
+      <input name="psd" placeholder="输入验证码" bindinput='psdInput' type="digit" />
+    </view>
+     <!-- <view class='alert'>{{tip}}</view> -->
+    <view class="change" bindtap="change">
+      {{change}}
     </view>
     <view class='logins'>
       <button class='go' bindtap="loginBtnClick">登录</button>
     </view>
   </form>
-  <view class='alert'>{{tip}}</view>
 </view>
-<view class="change" bindtap="change">
-  {{change}}
+<view class='container'>
+  <image src="/img/logo.jpg" class="logo"></image>
+  <view class="log">深圳卫医通信息科技有限公司@2019</view>
 </view>

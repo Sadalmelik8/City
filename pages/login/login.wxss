@@ -41,7 +41,7 @@ input {
   margin-top: 50rpx;
   margin-left: 20rpx;
   border-bottom: 1rpx solid #949899;
-  width: 500rpx;
+  width: 400rpx;
 }
 
 .container {
@@ -49,7 +49,7 @@ input {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  margin-top: 250rpx;
+  margin-top: 50rpx;
   background-color: white;
 }
 
@@ -65,7 +65,7 @@ input {
   height: 70rpx;
   line-height: 70rpx;
   border-radius: 25rpx;
-  margin-top: 150rpx;
+  margin-top: 50rpx;
   font-size: 30rpx;
 }
 
@@ -78,8 +78,27 @@ input {
 .alert {
   color: #949899;
   font-size: 30rpx;
+  margin: 40rpx 0 0 270rpx;
 }
 
 .change {
-  text-align: right;
+  text-align: center;
+  margin-top: 50rpx;
+  color: #0ca6e2;
+}
+
+.logo {
+  width: 80px;
+  height: 25px;
+}
+
+.log {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.user {
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
 }

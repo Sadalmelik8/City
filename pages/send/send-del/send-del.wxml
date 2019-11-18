@@ -18,7 +18,7 @@
 </view>
 <view class='res'>
   <view class='title'>地点选择：</view>
-  <view class="picker">
+  <view class="pickermap">
     {{map}}
   </view>
 </view>
@@ -35,7 +35,7 @@
   </view>
 </view>
 <view class='res'>
-  <view class='title'>报修人：</view>
+  <view class='title'>上报人：</view>
   <view class="picker">
     {{applicant}}
   </view>
@@ -47,7 +47,7 @@
   </view>
 </view>
 <view class='res'>
-  <view class='title'>接修人：</view>
+  <view class='title'>保洁人：</view>
   <view class="picker">
     {{repairman}}
   </view>

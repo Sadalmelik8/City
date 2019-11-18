@@ -1,0 +1,13 @@
+<view class='set'>
+  <scroll-view scroll-y="true" class='roll'>
+    <view class='name' wx:for="{{depts}}" wx:for-index="index" wx:for-item="item">
+      <view class='num'>{{index+1}}</view>
+      <view class='dept'>{{item.dept}}</view>
+      <button class='del' bindtap='del' id='{{item.id}}'>删除</button>
+    </view>
+  </scroll-view>
+</view>
+<view class='buttom'>
+    <input class='input' name = 'name' value='' placeholder='请输入收件科室' value='{{name}}' bindinput='inputWacth' />
+    <button class='btn' bindtap='add'>添加收件科室</button>
+  </view>

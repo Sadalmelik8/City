@@ -1,18 +1,18 @@
 <view class='homes'>
   <view class='home' bindtap='delivery'>
-    <image src='/img/home1.jpg'></image>
+    <image src='/img/home1.png'></image>
     <view>标本配送</view>
   </view>
   <view class='home' bindtap='repair'>
-    <image src='/img/home2.jpg'></image>
+    <image src='/img/home2.png'></image>
     <view>维修报修</view>
   </view>
   <view class='home' bindtap='send'>
-    <image src='/img/home3.jpg'></image>
+    <image src='/img/home3.png'></image>
     <view>污物报告</view>
   </view>
   <view class='home' bindtap='clear'>
-    <image src='/img/home4.jpg'></image>
+    <image src='/img/home4.png'></image>
     <view>被服洗涤</view>
   </view>
 </view>

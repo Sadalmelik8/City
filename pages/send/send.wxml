@@ -3,7 +3,7 @@
     mode="widthFix" class='background' style='display:{{background}}'></image>
   <text class='alt' style='display:{{background}}'>暂无待清洁记录</text>
 </view>
-<view style='display:{{imgstyle}}'>
+<view style='display:{{imgstyle}}' class="nav">
   <view wx:for="{{items}}" class='res'>
     <view class='prent' bindtap='deliverys' id='{{item.serialno}}'>
       <view class='title'>报告时间：{{item.spotime}}</view>
@@ -18,8 +18,13 @@
       {{item.amount}}</button>
   </view>
 </view>
+<view class="tm"></view>
+<view class="menu" style="display:{{menu}}">
+  <button bindtap="scan">报告</button>
+  <button bindtap="my">我的报告单</button>
+</view>
 <view class='image' style='display:{{style}}'>
   <image src='{{imgsrc}}' class='scan' bindtap='onscan'></image>
 </view>
 <!-- 新增 -->
-<text class="iconfont icon-saoyisao" style="font-size:60px;color:black;display:{{imgstyle}}" bindtap='scan'></text>
+<!-- <text class="iconfont icon-saoyisao" style="font-size:60px;color:black;display:{{imgstyle}}" bindtap='scan'></text> -->

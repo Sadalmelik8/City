@@ -1,10 +1,9 @@
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     rnd: '',
     std: '获取验证码',
     mobile: '',
@@ -24,13 +23,43 @@ Page({
    */
   onLoad: function() {
     clearInterval(this.data.num);
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    // 登录
+    var app = getApp();
+    var that = this;
+    // wx.login({
+    //   success: res => {
+    //     that.setData({
+    //       jscode: res.code,
+    //     })
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     wx.request({
+    //       url: this.data.url + 'svr=MP_11111&js_code=' + this.data.jscode,
+    //       success: function (res) {
+    //         if (res.data.ret.id == 1) {
+    //           app.globalData.fsession = res.data.ret.session;
+    //           app.globalData.username = res.data.ret.username;
+    //           app.globalData.cell_no = res.data.ret.cell_no;
+    //           app.globalData.type = res.data.ret.type;
+    //           app.globalData.profession = res.data.ret.profession;
+    //           wx.switchTab({
+    //             url: '../home/home'
+    //           })
+    //         } else {
+    //           wx.showToast({
+    //             title: '请登录',
+    //           })
+    //         }
+    //       }
+    //     })
+    //   }
+    // })
   },
 
   /**
@@ -102,6 +131,7 @@ Page({
       rnd: Math.floor(Math.random() * 100000),
       num: 60
     })
+    var app = getApp();
     var that = this;
     wx.request({
       url: this.data.url + 'svr=MP_00001&rnd=' + this.data.rnd + '&mobile=' + this.data.mobile,
@@ -109,19 +139,24 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        if (res.data.ret.active == '0') {
-          that.setData({
-            tip: '不存在的手机号'
+        if (res.data.ret.active == 0) {
+          wx.showToast({
+            title: '不存在的手机号',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
-        } else if (res.data.ret.active == '1') {
-          that.setData({
-            tip: '未激活的手机号'
+        } else if (res.data.ret.active == 1) {
+          wx.showToast({
+            title: '未激活的手机号',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
           wx.navigateTo({
             url: '../login/login-set?cell_no=' + that.data.mobile + '&fsession=' + res.data.ret.fsession
           })
-        } else {
-          var app = getApp();
+        } else if (res.data.ret.active == 2) {
           setInterval(function() {
             var numVal = that.data.num - 1;
             if (numVal > 0) {
@@ -139,13 +174,16 @@ Page({
             }
           }, 1000);
           app.globalData.fsession = res.data.ret.fsession;
-          that.setData({
-            tip: '成功获取验证码，收到短信后请输入'
+          wx.showToast({
+            title: '成功获取验证码，收到短信后输入',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
         }
       },
       fail: function(res) {}
-    });
+    })
   },
   //获取用户输入的验证码
   psdInput: function(e) {
@@ -169,36 +207,53 @@ Page({
       pwd: e.detail.value,
     })
   },
-  //登录
+  //工号登录
   loginBtnClicks: function(e) {
     var that = this;
     var app = getApp();
     wx.request({
       url: this.data.url + 'svr=MP_00000&mobile=' +
         this.data.mobile + '&smscode=' + this.data.pwd +
-        '&fsession=' + '1',
-      data: {},
+        '&fsession=' + '1' + '&userid=' + app.globalData.userid,
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        if (res.data.ret.id == '3') {
-          that.setData({
-            tips: '工号或密码不正确！'
+        if (res.data.ret.id == 0) {
+          wx.showToast({
+            title: '工号或密码不正确',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
-        } else if (res.data.ret.active == '1') {
-          that.setData({
-            tips: '未激活的用户'
+        } else if (res.data.ret.id == 2) {
+          wx.showToast({
+            title: '未激活的用户',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
           wx.navigateTo({
-            url: '../ login / login - set ? cell_no = ' + this.data.mobile
+            url: '../login/login-set?cell_no=' + that.data.pwd
           })
-        } else {
+        } else if (res.data.ret.id == 3) {
+          wx.showToast({
+            title: '不存在的工号',
+            icon: 'none',
+            duration: 2000,
+            mask: true
+          })
+        } else if (res.data.ret.id == 1) {
           app.globalData.fsession = res.data.ret.session;
           app.globalData.username = res.data.ret.username;
           app.globalData.cell_no = res.data.ret.cell_no;
-          that.setData({
-            tips: '登陆成功'
+          app.globalData.type = res.data.ret.type;
+          app.globalData.profession = res.data.ret.profession;
+          wx.showToast({
+            title: '登录成功',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
           wx.switchTab({
             url: '../home/home'
@@ -207,29 +262,46 @@ Page({
       }
     })
   },
+
   //登录
   loginBtnClick: function(e) {
     var that = this;
     var app = getApp();
+    // wx.login({
+    //   url: this.data.url + 'svr=MP_11111&js_code=' + this.data.jscode,
+    //   success(res) {
+    //     this.setData({
+    //       jscode: res.code,
+    //     })
+    //   }
+    // })
     wx.request({
       url: this.data.url + 'svr=MP_00000&mobile=' +
         this.data.mobile + '&smscode=' + this.data.pwd +
-        '&fsession=' + getApp().globalData.fsession,
+        '&fsession=' + getApp().globalData.fsession + '&userid=' + app.globalData.userid,
       data: {},
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function(res) {
-        if (res.data.status == 'err') {
-          that.setData({
-            tip: '密码不正确！'
+        if (res.data.ret.id == 0) {
+          wx.showToast({
+            title: '验证码不正确',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
         } else {
           app.globalData.fsession = res.data.ret.session;
           app.globalData.username = res.data.ret.username;
           app.globalData.cell_no = res.data.ret.cell_no;
-          that.setData({
-            tip: '登陆成功'
+          app.globalData.type = res.data.ret.type;
+          app.globalData.profession = res.data.ret.profession;
+          wx.showToast({
+            title: '登录成功',
+            icon: 'none',
+            duration: 2000,
+            mask: true
           })
           wx.switchTab({
             url: '../home/home'

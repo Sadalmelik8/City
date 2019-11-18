@@ -1,6 +1,5 @@
 {
-  "backgroundTextStyle": "light",
-  "navigationBarBackgroundColor": "#1bf4df",
+  "backgroundTextStyle": "dark",
   "navigationBarTitleText": "标本配送",
   "navigationBarTextStyle": "black",
   "enablePullDownRefresh": true

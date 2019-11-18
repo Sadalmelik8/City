@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     src: [{
         src: ''
       },
@@ -63,7 +63,7 @@ Page({
     ],
     array: [],
     arraylevel: ['普通', '紧急'],
-    arraytype: ['血样', '其他'],
+    arraytype: [],
     index1: 0,
     index2: 0,
     index3: 0,
@@ -109,8 +109,11 @@ Page({
   onReady: function() {
     var that = this;
     var app = getApp();
+    var array = [];
+    var arr = [];
+    var arrs = [];
     wx.request({
-        url: this.data.url + 'svr=MP_00008&fsession=' +
+        url: this.data.url + 'svr=MP_00014&fsession=' +
           app.globalData.fsession +
           "&username=" +
           app.globalData.username,
@@ -119,11 +122,37 @@ Page({
         },
         method: 'get',
         success: function(res) {
+          arr.push('维修中心');
+          for (var i = 0; i < res.data.ret.deliver.length; i++) {
+            arr.push(res.data.ret.deliver[i]);
+          }
+          // console
           that.setData({
-            array: res.data.ret.deliver
+            array: arr,
           })
         },
         fail: function(res) {
+          console.log(res);
+        }
+      }),
+      wx.request({
+        url: this.data.url + 'svr=MP_00009&fsession=' +
+          app.globalData.fsession +
+          "&username=" +
+          app.globalData.username,
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'get',
+        success: function (res) {
+          for (var i = 0; i < res.data.ret.length; i++) {
+            arrs.push(res.data.ret[i].f_type)
+          }
+          that.setData({
+            arraytype: arrs,
+          })
+        },
+        fail: function (res) {
           console.log(res);
         }
       }),
@@ -417,6 +446,33 @@ Page({
       'display[6].display': 'none',
       'display[7].display': 'none',
       'display[8].display': 'none',
+      array: [],
+      arraylevel: ['普通', '紧急'],
+      arraytype: ['血样', '其他'],
+      index1: 0,
+      index2: 0,
+      index3: 0,
+      multiArrayss: [
+        [],
+        [],
+        []
+      ],
+      multiArray: [
+        [],
+        [],
+        []
+      ],
+      multiArrays: [
+        [],
+        [],
+        []
+      ],
+      multi: [
+        [],
+        [],
+        []
+      ],
+      multiIndex: [0, 0, 0],
     })
     wx.showToast({
       title: '已重置',
@@ -459,12 +515,19 @@ Page({
                 },
                 method: 'post',
                 success: function(res) {
-                  wx.showToast({
-                    title: '报修成功',
-                  })
-                  wx.redirectTo({
-                    url: '../repair',
-                  })
+                  if(that.data.res.ret.id == 1){
+                    wx.showToast({
+                      
+                      title: '报修成功',
+                    })
+                    wx.redirectTo({
+                      url: '../repair',
+                    })
+                  }else{
+                    wx.showToast({
+                      title: '失败',
+                    })
+                  }
                 },
                 fail: function(res) {
                   console.log(res);

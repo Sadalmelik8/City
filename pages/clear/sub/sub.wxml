@@ -1,0 +1,11 @@
+<scroll-view scroll-y="true" class='roll'>
+  <view class='res' wx:for="{{ress}}" wx:for-index="index" wx:for-item="item">
+    <view class='id'>{{item.id}}</view>
+    <view class='name'>{{item.name}}</view>
+    <view class='size'>{{item.size}}</view>
+      <view class='num'>数量：<input class='count' value= '0'  type="number" id='{{index}}' bindinput='num'/></view>
+  </view>
+</scroll-view>
+<view class='button'>
+  <button class='btn' bindtap='sub'>提交</button>
+</view>

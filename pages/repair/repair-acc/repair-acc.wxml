@@ -19,12 +19,11 @@
 <view class='res'>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArrayss}}">
     地点选择：
-    <view class="picker">
+    <view class="pickermap">
       {{multiArrayss[0][multiIndex[0]]}} {{multiArrayss[1][multiIndex[1]]}} {{multiArrayss[2][multiIndex[2]]}}
     </view>
   </picker>
 </view>
-
 <view class='res'>
   <picker bindchange="bindPickerChange1" value="{{index}}" range="{{arraytype}}">
     故障类别：

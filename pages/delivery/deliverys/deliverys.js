@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     serialno: '',
     status: '',
     operator: '',
@@ -12,11 +12,13 @@ Page({
     optime: '',
     arrtime: '',
     accepter: '',
-    acc_no: '',
+    del_no: '',
     acctime: '',
     dept: '',
     level: '',
     items: [],
+    imgstyle: '',
+    qty:'',
   },
 
   /**
@@ -35,41 +37,78 @@ Page({
     var that = this;
     var app = getApp();
     wx.request({
-      url: this.data.url + 'svr=MP_00003&fsession=' +
-        app.globalData.fsession +
-        "&username=" +
-        app.globalData.username,
-      data: {
-        serialno: that.data.serialno,
-        cell_no: app.globalData.cell_no,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      method: 'get',
-      success: function(res) {
-        if (!res.data.ret[0].id) {
-          var num = res.data.ret[0].sampleno.length;
-          var arr = [];
-          for (var i = 0; i < num; i++) {
-            arr.push(res.data.ret[0].sampleno[i]);
+        url: this.data.url + 'svr=MP_00003&fsession=' +
+          app.globalData.fsession +
+          "&username=" +
+          app.globalData.username,
+        data: {
+          serialno: that.data.serialno,
+          cell_no: app.globalData.cell_no,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        method: 'get',
+        success: function(res) {
+          var sampleno;
+          var qty;
+          var color;
+          if (!res.data.ret[0].id) {
+            var num = res.data.ret[0].sampleno.length;
+            var arr = [];
+            for (var i = 0; i < num; i++) {
+              if (i % 2 != 0) {
+                arr.push({
+                  color: '#0ca6e2',
+                  sampleno: res.data.ret[0].sampleno[i],
+                  qty: res.data.ret[0].qty[i],
+                })
+              } else {
+                arr.push({
+                  color: '',
+                  sampleno: res.data.ret[0].sampleno[i],
+                  qty: res.data.ret[0].qty[i],
+                })
+              }
+            }
+            console.log(arr);
+            that.setData({
+              items: arr,
+              status: res.data.ret[0].status,
+              operator: res.data.ret[0].operator,
+              opt_no: res.data.ret[0].opt_no,
+              optime: res.data.ret[0].optime,
+              arrtime: res.data.ret[0].arrtime,
+              accepter: res.data.ret[0].accepter,
+              del_no: res.data.ret[0].del_no,
+              deliver: res.data.ret[0].deliver,
+              dept: res.data.ret[0].dept,
+              level: res.data.ret[0].level,
+            })
           }
+        }
+      }),
+      wx.request({
+        url: that.data.url +
+          'svr=MP_00006&fsession=' +
+          app.globalData.fsession +
+          "&username=" +
+          app.globalData.username,
+        data: {
+          serialno: that.data.serialno,
+          cell_no: app.globalData.cell_no,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function(res) {
           that.setData({
-            items: arr,
-            status: res.data.ret[0].status,
-            operator: res.data.ret[0].operator,
-            opt_no: res.data.ret[0].opt_no,
-            optime: res.data.ret[0].optime,
-            arrtime: res.data.ret[0].arrtime,
-            accepter: res.data.ret[0].accepter,
-            acc_no: res.data.ret[0].acc_no,
-            acctime: res.data.ret[0].acctime,
-            dept: res.data.ret[0].dept,
-            level: res.data.ret[0].level,
+            imgsrc: res.data.ret[0].qrcode,
+            // style: 'flex',
+            // imgstyle: 'none'
           })
         }
-      }
-    })
+      })
   },
 
   /**

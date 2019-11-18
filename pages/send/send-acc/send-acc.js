@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     src: [{
         src: ''
       },
@@ -63,7 +63,7 @@ Page({
     ],
     array: [],
     arraylevel: ['普通', '紧急'],
-    arraytype: ['血样', '其他'],
+    arraytype: ['污物', '其他'],
     index1: 0,
     index2: 0,
     index3: 0,
@@ -109,8 +109,9 @@ Page({
   onReady: function() {
     var that = this;
     var app = getApp();
+    var array = [];
     wx.request({
-        url: this.data.url + 'svr=MP_00008&fsession=' +
+        url: this.data.url + 'svr=MP_00026&fsession=' +
           app.globalData.fsession +
           "&username=" +
           app.globalData.username,
@@ -119,8 +120,10 @@ Page({
         },
         method: 'get',
         success: function(res) {
+          array.push('保洁中心');
+          array.push(res.data.ret.deliver);
           that.setData({
-            array: res.data.ret.deliver
+            array: array,
           })
         },
         fail: function(res) {
@@ -414,6 +417,33 @@ Page({
       'display[6].display': 'none',
       'display[7].display': 'none',
       'display[8].display': 'none',
+      array: [],
+      arraylevel: ['普通', '紧急'],
+      arraytype: ['血样', '其他'],
+      index1: 0,
+      index2: 0,
+      index3: 0,
+      multiArrayss: [
+        [],
+        [],
+        []
+      ],
+      multiArray: [
+        [],
+        [],
+        []
+      ],
+      multiArrays: [
+        [],
+        [],
+        []
+      ],
+      multi: [
+        [],
+        [],
+        []
+      ],
+      multiIndex: [0, 0, 0],
     })
     wx.showToast({
       title: '已重置',
@@ -445,7 +475,7 @@ Page({
                   location: that.data.multiArrayss[0][that.data.multiIndex[0]] + '  ' +
                     that.data.multiArrayss[1][that.data.multiIndex[1]] + '  ' +
                     that.data.multiArrayss[2][that.data.multiIndex[2]], //地点
-
+                  disposer: that.data.array[that.data.index3], //维修人
                   level: that.data.arraylevel[that.data.index2], //紧急度
                   bfpic: bases, //图片
                 },
@@ -481,7 +511,7 @@ Page({
             location: that.data.multiArrayss[0][that.data.multiIndex[0]] + '  ' +
               that.data.multiArrayss[1][that.data.multiIndex[1]] + '  ' +
               that.data.multiArrayss[2][that.data.multiIndex[2]], //地点
-
+            disposer: that.data.array[that.data.index3], //维修人
             level: that.data.arraylevel[that.data.index2], //紧急度
             bfpic: '', //图片
           },

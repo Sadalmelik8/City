@@ -1,0 +1,129 @@
+.background {
+  width: 100%;
+  /* position: absolute;
+  z-index: 100; */
+}
+
+.icon-saoyisao {
+  position: fixed;
+  bottom: 200rpx;
+  right: 50rpx;
+  z-index: 100;
+}
+
+.prent {
+  display: inline-block;
+  width: 80%;
+}
+
+.alt {
+  position: absolute;
+  top: 150rpx;
+  right: 35%;
+  z-index: 100;
+  color: #bfbfbf;
+  font-size: 30rpx;
+}
+
+.res {
+  border-bottom: 1rpx solid #eee;
+  height: 150rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.res view {
+  vertical-align: top;
+}
+
+.index {
+  width: 10%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  display: inline-block;
+}
+
+.title {
+  width: 30%;
+  font-size: 25rpx;
+  text-align: left;
+  color: #4f82b3;
+  display: inline-block;
+}
+
+.time {
+  width: 65%;
+  font-size: 25rpx;
+  display: inline-block;
+  text-align: left;
+}
+
+.titl {
+  width: 70%;
+  font-size: 25rpx;
+  display: inline-block;
+  text-align: left;
+  color: red;
+}
+
+.status {
+  width: 30%;
+  font-size: 25rpx;
+  display: inline-block;
+  text-align: left;
+}
+
+.att {
+  font-size: 25rpx;
+  color: #a89d9d;
+  width: 70%;
+  display: inline-block;
+}
+
+.jiedan {
+  width: 20%;
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 35rpx;
+  font-size: 25rpx;
+}
+
+.image {
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.scan {
+  width: 500rpx;
+  height: 500rpx;
+}
+.tm {
+  height: 50px;
+  width: 100%;
+}
+
+.menu {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  background-color: white;
+}
+
+.menu button {
+  display: inline-block;
+  width: 35%;
+  height: 30px;
+  background-color: #0ca6e2;
+  color: white;
+  line-height: 30px;
+  margin: 0 5%;
+  border-radius: 25px;
+  margin-top: 2%;
+}

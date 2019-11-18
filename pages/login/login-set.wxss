@@ -54,8 +54,11 @@ input {
 }
 
 .yzm {
-  color: #949899;
-  width: 220rpx;
+  width: 240rpx;
+}
+
+.yzmbtn {
+  width: 250rpx;
 }
 
 .go {

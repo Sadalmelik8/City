@@ -1,0 +1,49 @@
+<view class='page'>
+<input class="detailText" placeholder="手工录入" confirm-type="done" bindconfirm='done' bindinput='expInput' value="{{detail}}"></input>
+<button class="detail" bindtap="onclick">完成</button>
+  <button bindtap='pic' class='upload'>扫码录入</button>
+</view>
+<view class='res'>
+  <picker bindchange="bindPickerChange1" value="{{index}}" range="{{arraytype}}">
+    标本类型：
+    <view class="picker">
+      {{arraytype[index1]}}
+    </view>
+  </picker>
+</view>
+<view class='res'>
+  <picker bindchange="bindPickerChange2" value="{{index}}" range="{{arraylevel}}">
+    紧 急 度 ：
+    <view class="picker">
+      {{arraylevel[index2]}}
+    </view>
+  </picker>
+</view>
+<view class='res'>
+  <picker bindchange="bindPickerChange3" value="{{index}}" range="{{array}}">
+    配 送 人 ：
+    <view class="picker">
+      {{array[index3]}}
+    </view>
+  </picker>
+</view>
+<view class='res'>
+  <picker bindchange="bindPickerChange4" value="{{index}}" range="{{arr}}">
+    收件科室 ：
+    <view class="picker">
+      {{arr[index4]}}
+    </view>
+  </picker>
+</view>
+<scroll-view class='roll' scroll-y="true">
+  <view wx:for="{{details}}" wx:for-index="index" wx:for-item="item" class='name'>
+    <view class='prent'>
+      <view class='time' bindtap='deliverys' id='{{item}}'>标本号：{{item}}</view>
+      <view class='title'>数量：<input class='num' value='1' value='{{add[index]}}' type="number" id='{{index}}' bindinput='num'/></view>
+    </view>
+  </view>
+</scroll-view>
+<view class='bottom'>
+  <button bindtap='reset' class='reset'>重置</button>
+  <button bindtap='submit' class='submit'>提交</button>
+</view>

@@ -1,2 +1,0 @@
-# com.wyt.fin.miniprogram
-

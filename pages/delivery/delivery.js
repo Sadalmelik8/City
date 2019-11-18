@@ -5,13 +5,13 @@ Page({
    */
   data: {
     background: 'block',
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     items: [],
     imgsrc: '',
     style: 'none',
-    imgstyle: '',
     nums: 0,
     flag: 0,
+    menu: 0,
   },
 
   /**
@@ -47,19 +47,32 @@ Page({
       success: function(res) {
         if (isNaN(res.data.ret[0].id)) {
           var num = res.data.ret.length;
-          if (num == that.data.items.length) {
-
-          } else {
+          console.log(num);
+          if (app.globalData.type == 0) {
+            if (that.data.flag == 0) {
+              that.setData({
+                menu: 'block',
+              })
+            } else {
+              that.setData({
+                menu: 'none',
+              })
+            }
             wx.showLoading({
               title: '玩命加载中',
             })
             var i = '';
             for (i = that.data.nums + i; i < num; i++) {
+              console.log(num);
               if ((i + 1) % 10 != 0) {
                 if (res.data.ret[i].status == '已提交') {
                   res.data.ret[i].deliver = '接单';
-                  res.data.ret[i].acc_no = 'jiedan';
-                  res.data.ret[i].del_no = '#1bf4df'
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                } else if (res.data.ret[i].status == '已接单') {
+                  res.data.ret[i].deliver = '扫码';
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
                 } else {
                   res.data.ret[i].deliver = '二维码';
                   res.data.ret[i].acc_no = 'goscan';
@@ -70,11 +83,83 @@ Page({
                   background: 'none',
                   items: that.data.items,
                 })
+                if (i + 1 == num) {
+                  that.setData({
+                    nums: that.data.nums + 10,
+                  })
+                }
+              } else {
+                if (res.data.ret[i].status == '已提交') {
+                  res.data.ret[i].deliver = '接单';
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                } else if (res.data.ret[i].status == '已接单') {
+                  res.data.ret[i].deliver = '扫码';
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                } else {
+                  res.data.ret[i].deliver = '二维码';
+                  res.data.ret[i].acc_no = 'goscan';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  nums: that.data.nums + 10,
+                  background: 'none',
+                  items: that.data.items,
+                })
+                break;
+              }
+            }
+          } else {
+            if (that.data.flag == 0) {
+              that.setData({
+                menu: 'block',
+              })
+            } else {
+              that.setData({
+                menu: 'none',
+              })
+            }
+            wx.showLoading({
+              title: '玩命加载中',
+            })
+            var i = '';
+            for (i = that.data.nums + i; i < num; i++) {
+              console.log(that.data.items);
+              if ((i + 1) % 10 != 0) {
+                if (res.data.ret[i].status == '已提交') {
+                  res.data.ret[i].deliver = '接单';
+                  res.data.ret[i].acc_no = 'jiedan';
+                  res.data.ret[i].del_no = '#1bf4df'
+                } else if (res.data.ret[i].status == '已接单') {
+                  res.data.ret[i].deliver = '扫码';
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                } else {
+                  res.data.ret[i].deliver = '二维码';
+                  res.data.ret[i].acc_no = 'goscan';
+                  res.data.ret[i].del_no = '#cfc9c9'
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  background: 'none',
+                  items: that.data.items,
+                })
+                if (i + 1 == num) {
+                  that.setData({
+                    nums: that.data.nums + 10,
+                  })
+                }
               } else {
                 if (res.data.ret[i].status == '已提交') {
                   res.data.ret[i].deliver = '接单';
                   res.data.ret[i].acc_no = 'jiedan';
                   res.data.ret[i].del_no = '#1bf4df'
+                } else if (res.data.ret[i].status == '已接单') {
+                  res.data.ret[i].deliver = '扫码';
+                  res.data.ret[i].acc_no = '';
+                  res.data.ret[i].del_no = '#cfc9c9'
                 } else {
                   res.data.ret[i].deliver = '二维码';
                   res.data.ret[i].acc_no = 'goscan';
@@ -91,9 +176,18 @@ Page({
             }
           }
         } else {
-          that.setData({
-            background: 'block',
-          })
+          if (that.data.flag == 0) {
+            that.setData({
+              menu: 'block',
+            })
+          } else {
+            that.setData({
+              menu: 'none',
+            })
+          }
+          // that.setData({
+          //   background: 'block',
+          // })
         }
         wx.hideLoading();
       }
@@ -132,6 +226,7 @@ Page({
     })
     this.onReady();
     wx.hideLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -158,70 +253,83 @@ Page({
     var that = this;
     var app = getApp();
     var idx = e.target.dataset.index;
-    wx.request({
-      url: this.data.url + 'svr=MP_00004&fsession=' +
-        app.globalData.fsession +
-        "&username=" +
-        app.globalData.username,
-      data: {
-        serialno: e.currentTarget.id,
-        cell_no: app.globalData.cell_no,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function(res) {
-        if (res.data.ret.id == 1) {
-          wx.showToast({
-              title: '接单成功',
-            }),
-            wx.request({
-              url: that.data.url + 'svr=MP_00002&fsession=' +
-                app.globalData.fsession +
-                "&username=" +
-                app.globalData.username,
-              data: {
-                cell_no: app.globalData.cell_no,
-                flag: that.data.flag,
-              },
-              header: {
-                'content-type': 'application/json' // 默认值
-              },
-              method: 'get',
-              success: function(res) {
-                if (isNaN(res.data.ret[0].id)) {
-                  var num = res.data.ret.length;
-                  var arr = [];
-                  for (var i = 0; i < num; i++) {
-                    if (res.data.ret[i].status == '已提交') {
-                      res.data.ret[i].deliver = '接单';
-                      res.data.ret[i].acc_no = 'jiedan';
-                      res.data.ret[i].del_no = '#1bf4df'
-                    } else {
-                      res.data.ret[i].deliver = '二维码';
-                      res.data.ret[i].acc_no = 'goscan';
-                      res.data.ret[i].del_no = '#cfc9c9'
+    if (app.globalData.type == 0) {
+      wx.showToast({
+        title: '你不是配送人员,无法接单',
+        icon: 'none',
+      })
+    } else if (app.globalData.type == 1) {
+      wx.request({
+        url: this.data.url + 'svr=MP_00004&fsession=' +
+          app.globalData.fsession +
+          "&username=" +
+          app.globalData.username,
+        data: {
+          serialno: e.currentTarget.id,
+          cell_no: app.globalData.cell_no,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function(res) {
+          if (res.data.ret.id == 1) {
+            wx.showToast({
+                title: '接单成功',
+              }),
+              wx.request({
+                url: that.data.url + 'svr=MP_00002&fsession=' +
+                  app.globalData.fsession +
+                  "&username=" +
+                  app.globalData.username,
+                data: {
+                  cell_no: app.globalData.cell_no,
+                  flag: that.data.flag,
+                },
+                header: {
+                  'content-type': 'application/json' // 默认值
+                },
+                method: 'get',
+                success: function(res) {
+                  if (isNaN(res.data.ret[0].id)) {
+                    var num = res.data.ret.length;
+                    var arr = [];
+                    for (var i = 0; i < num; i++) {
+                      if (res.data.ret[i].status == '已提交') {
+                        res.data.ret[i].deliver = '接单';
+                        res.data.ret[i].acc_no = 'jiedan';
+                        res.data.ret[i].del_no = '#1bf4df'
+                      } else {
+                        res.data.ret[i].deliver = '二维码';
+                        res.data.ret[i].acc_no = 'goscan';
+                        res.data.ret[i].del_no = '#cfc9c9'
+                      }
+                      arr.push(res.data.ret[i]);
                     }
-                    arr.push(res.data.ret[i]);
+                    that.setData({
+                      background: 'none',
+                      items: arr,
+                    })
+                  } else {
+                    var arr = [];
+                    that.setData({
+                      background: 'block',
+                      items: arr,
+                    })
                   }
-                  that.setData({
-                    background: 'none',
-                    items: arr,
-                  })
                 }
-              }
+              })
+          } else {
+            wx.showToast({
+              title: '已被其他配送人员接单',
+              icon: 'none'
             })
-        } else {
-          wx.showToast({
-            title: '已被其他配送人员接单',
-            icon: 'none'
-          })
-          wx.redirectTo({
-            url: '../delivery/delivery',
-          })
+            wx.redirectTo({
+              url: '../delivery/delivery',
+            })
+          }
         }
-      }
-    })
+      })
+    }
   },
   //扫码
   scan: function() {
@@ -244,12 +352,12 @@ Page({
             'content-type': 'application/json' // 默认值
           },
           success: function(res) {
-            if (res.data.ret[0].id == 1) {
+            if (res.data.ret.id == 1) {
               wx.showToast({
                   title: '扫码成功',
                 }),
                 wx.navigateTo({
-                  url: '../deliverys/deliverys?serialno=' + num,
+                  url: '../delivery/deliverys/deliverys?serialno=' + num,
                 })
             } else {
               wx.showToast({
@@ -297,4 +405,15 @@ Page({
       imgstyle: 'block'
     })
   },
+  //我的配送单
+  my: function() {
+    this.setData({
+      items: [],
+      flag: 2,
+      menu: 'none',
+      items: [],
+      nums: 0
+    })
+    this.onReady();
+  }
 })

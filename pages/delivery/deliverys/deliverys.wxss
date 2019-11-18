@@ -5,14 +5,21 @@
 }
 
 .serialno {
+  display: inline-block;
   font-size: 35rpx;
   color: royalblue;
   border-bottom: 1rpx black solid;
+  width: 100%;
 }
-
+.qty{
+  display: inline-block;
+  font-size: 25rpx;
+   width: 10%;
+   text-align: center;
+}
 .level {
   width: 40%;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 25rpx;
   color: red;
 }
@@ -77,11 +84,11 @@
   border-bottom: 1rpx #a7a0a0 dashed;
 }
 
-.sampleno {
+.samplenos {
   display: inline-block;
   font-size: 25rpx;
   color: #99bfc4;
-  width: 80%;
+  width: 40%;
 }
 
 .index {
@@ -89,4 +96,16 @@
   font-size: 25rpx;
   width: 20%;
   text-align: center;
+}
+
+.image {
+  display: flex;
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+}
+
+.scan {
+  width: 250rpx;
+  height: 250rpx;
 }

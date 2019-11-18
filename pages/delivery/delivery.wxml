@@ -3,23 +3,29 @@
     mode="widthFix" class='background' style='display:{{background}}'></image>
   <text class='alt' style='display:{{background}}'>暂无待配送标本</text>
 </view>
-<view style='display:{{imgstyle}}'>
+<view style='display:{{imgstyle}}' class="nav">
   <view wx:for="{{items}}" wx:for-index="index" wx:for-item="item" class='res'>
     <view class='prent' bindtap='deliverys' id='{{item.serialno}}'>
       <view class='title'>提交人：{{item.operator}}</view>
-      <view class='time'>科室：{{item.dept}}</view>
+      <!-- <view class='time'>科室：{{item.dept}}</view> -->
       <view class='level'>紧急度：{{item.level}}</view>
       <view class='att'>取件时间：{{item.picktime}}</view>
-      <view class='att'>要求送达时间：{{item.arrtime}}</view>
+      <view class='att'>送达时间：{{item.arrtime}}</view>
       <view class='status'>状态：{{item.status}}</view>
     </view>
     <button class='jiedan' bindtap='{{item.acc_no}}' data-index="{{index}}" id='{{item.serialno}}' style='background-color:{{item.del_no}}'>
       {{item.deliver}}</button>
   </view>
 </view>
+<view class="tm"></view>
+<view class="menu" style="display:{{menu}}">
+  <button bindtap="scan">扫码</button>
+  <button bindtap="my">我的配送单</button>
+</view>
+
 <view class='image' style='display:{{style}}'>
   <image src='{{imgsrc}}' class='scan' bindtap='onscan' style='display:{{style}}'></image>
 </view>
 
 <!-- 扫码 -->
-<text class="iconfont icon-saoyisao" style="font-size:60px;color:black;display:{{imgstyle}}" bindtap='scan'></text>
+<!-- <text class="iconfont icon-saoyisao" style="font-size:60px;color:black;display:{{imgstyle}}" bindtap='scan'></text> -->

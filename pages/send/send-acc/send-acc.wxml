@@ -19,7 +19,7 @@
 <view class='res'>
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArrayss}}">
     地点选择：
-    <view class="picker">
+    <view class="pickermap">
       {{multiArrayss[0][multiIndex[0]]}} {{multiArrayss[1][multiIndex[1]]}} {{multiArrayss[2][multiIndex[2]]}}
     </view>
   </picker>
@@ -44,7 +44,7 @@
 </view>
 <view class='res'>
   <picker bindchange="bindPickerChange3" value="{{index}}" range="{{array}}">
-    维 修 人 ：
+    保 洁 人 ：
     <view class="picker">
       {{array[index3]}}
     </view>

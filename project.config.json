@@ -24,9 +24,9 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
-	"appid": "wxeaf90a129172e5b9",
-	"projectname": "wyt-mfy",
+	"libVersion": "2.9.1",
+	"appid": "wxc8eab3994a7bdb73",
+	"projectname": "wyt-wx1",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

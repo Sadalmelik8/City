@@ -27,4 +27,7 @@
     <text class="left">我的被服洗涤</text>
     <text class="right">></text>
   </view>
+  <view class='logoff'  bindtap='logoff'>
+    退出
+  </view>
 </view>

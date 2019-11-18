@@ -1,65 +1,65 @@
 <view style="display:{{imgstyle}};">
-<view class='page'>
-  <view class="pickers">
-    故障描述：
-  </view>
-  <text class="detailText">
+  <view class='page'>
+    <view class="pickers">
+      故障描述：
+    </view>
+    <text class="detailText">
 {{detail}}
 </text>
-  <image src='data:image/jpeg;base64,{{src[0]}}' class='pic' style='display:{{display[0].display}}'bindtap="goscan"data-imgsrc="{{src[0]}}"></image> 
-  <image src='data:image/jpeg;base64,{{src[1]}}' class='pic' style='display:{{display[1].display}}'bindtap="goscan"data-imgsrc="{{src[1]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[2]}}' class='pic' style='display:{{display[2].display}}'bindtap="goscan"data-imgsrc="{{src[2]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[3]}}' class='pic' style='display:{{display[3].display}}'bindtap="goscan"data-imgsrc="{{src[3]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[4]}}' class='pic' style='display:{{display[4].display}}'bindtap="goscan"data-imgsrc="{{src[4]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[5]}}' class='pic' style='display:{{display[5].display}}'bindtap="goscan"data-imgsrc="{{src[5]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[6]}}' class='pic' style='display:{{display[6].display}}'bindtap="goscan"data-imgsrc="{{src[6]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[7]}}' class='pic' style='display:{{display[7].display}}'bindtap="goscan"data-imgsrc="{{src[7]}}"></image>
-  <image src='data:image/jpeg;base64,{{src[8]}}' class='pic' style='display:{{display[8].display}}'bindtap="goscan"data-imgsrc="{{src[8]}}"></image>
-</view>
-<view class='res'>
-  <view class='title'>地点选择：</view>
-  <view class="picker">
-    {{map}}
+    <image src='data:image/jpeg;base64,{{src[0]}}' class='pic' style='display:{{display[0].display}}' bindtap="goscan" data-imgsrc="{{src[0]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[1]}}' class='pic' style='display:{{display[1].display}}' bindtap="goscan" data-imgsrc="{{src[1]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[2]}}' class='pic' style='display:{{display[2].display}}' bindtap="goscan" data-imgsrc="{{src[2]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[3]}}' class='pic' style='display:{{display[3].display}}' bindtap="goscan" data-imgsrc="{{src[3]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[4]}}' class='pic' style='display:{{display[4].display}}' bindtap="goscan" data-imgsrc="{{src[4]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[5]}}' class='pic' style='display:{{display[5].display}}' bindtap="goscan" data-imgsrc="{{src[5]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[6]}}' class='pic' style='display:{{display[6].display}}' bindtap="goscan" data-imgsrc="{{src[6]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[7]}}' class='pic' style='display:{{display[7].display}}' bindtap="goscan" data-imgsrc="{{src[7]}}"></image>
+    <image src='data:image/jpeg;base64,{{src[8]}}' class='pic' style='display:{{display[8].display}}' bindtap="goscan" data-imgsrc="{{src[8]}}"></image>
   </view>
-</view>
+  <view class='res'>
+    <view class='title'>地点选择：</view>
+    <view class="pickermap">
+      {{map}}
+    </view>
+  </view>
 
-<view class='res'>
-  <view class='title'>故障类别：</view>
-  <view class="picker">
-    {{category}}
+  <view class='res'>
+    <view class='title'>故障类别：</view>
+    <view class="picker">
+      {{category}}
+    </view>
   </view>
-</view>
 
-<view class='res'>
-  <view class='title'>紧急度：</view>
-  <view class="picker">
-    {{level}}
+  <view class='res'>
+    <view class='title'>紧急度：</view>
+    <view class="picker">
+      {{level}}
+    </view>
   </view>
-</view>
-<view class='res'>
-  <view class='title'>报修时间：</view>
-  <view class="picker">
-    {{apltime}}
+  <view class='res'>
+    <view class='title'>报修时间：</view>
+    <view class="picker">
+      {{apltime}}
+    </view>
   </view>
-</view>
-<view class='res'>
-  <view class='title'>报修人：</view>
-  <view class="picker">
-    {{applicant}}
+  <view class='res'>
+    <view class='title'>报修人：</view>
+    <view class="picker">
+      {{applicant}}
+    </view>
   </view>
-</view>
-<view class='res'>
-  <view class='title'>联系方式：</view>
-  <view class="picker" bindtap='acc_no'>
-    {{aplcell}}
+  <view class='res'>
+    <view class='title'>联系方式：</view>
+    <view class="picker" bindtap='acc_no'>
+      {{aplcell}}
+    </view>
   </view>
-</view>
-<view class='res'>
-  <view class='title'>接修人：</view>
-  <view class="picker">
-    {{repairman}}
+  <view class='res'>
+    <view class='title'>接修人：</view>
+    <view class="picker">
+      {{repairman}}
+    </view>
   </view>
-</view>
 </view>
 
 <view class='image' style='display:{{styles}}'>

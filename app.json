@@ -8,15 +8,22 @@
     "pages/repair/repair-acc/repair-acc",
     "pages/delivery/delivery",
     "pages/home/home",
-    "pages/delivery/deliverys/deliverys",
     "pages/send/send",
     "pages/send/send-acc/send-acc",
     "pages/send/send-del/send-del",
-    "pages/clear/clear"
+    "pages/clear/clear",
+    "pages/clear/clears/clears",
+    "pages/clear/clears-room/clears-room",
+    "pages/delivery/deliverys/deliverys",
+    "pages/delivery/deliverytj/deliverytj",
+    "pages/delivery/deliverytj/deliverytjs/deliverytjs",
+    "pages/deptSet/deptSet",
+    "pages/clear/cleardept/cleardept",
+    "pages/clear/sub/sub"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1bf4df",
+    "navigationBarBackgroundColor": "#0ca6e2",
     "navigationBarTitleText": "卫医通",
     "navigationBarTextStyle": "black"
   },

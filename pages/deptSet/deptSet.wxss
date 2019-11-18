@@ -1,0 +1,70 @@
+.set{
+  width: 96%;
+  margin-left: 2%;
+}
+.roll{
+  height: 1000rpx;
+  margin-top: 20rpx;
+}
+.name{
+  margin-bottom: 20rpx;
+}
+.name>view{
+  display: inline-block;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+   vertical-align: middle;
+    font-size: 30rpx;
+}
+.num{
+  width: 20%;
+  border-right: 1px solid #999;
+  box-sizing: border-box;
+}
+.dept{
+  width: 50%;
+  border-right: 1px solid #999;
+  box-sizing: border-box;
+}
+.del{
+  display: inline-block;
+  width: 20%;
+  height: 60rpx;
+  background: red;
+  color: #fff;
+  line-height: 60rpx;
+  vertical-align: middle;
+  font-size: 30rpx;
+  margin-left: 5%;
+}
+.buttom{
+  width: 100%;
+  display: inline-block;
+  position: fixed;
+  bottom: 5rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: rgba(153, 153, 153, 0.158)
+}
+.input{
+  display: inline-block;
+  width: 50%;
+  height:60rpx;
+  padding-left: 20rpx;
+  font-size: 30rpx;
+  border: 1px solid #999;
+  margin: 0 5% 0 3%;
+  background: #fff;
+  vertical-align: middle;
+  border-radius: 25px;
+}
+.btn{
+  font-size: 30rpx;
+  display: inline-block;
+  width: 35%;
+  height:60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  vertical-align: middle;
+}

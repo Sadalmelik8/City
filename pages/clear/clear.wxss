@@ -1,7 +1,7 @@
 .background {
   width: 100%;
-  position: absolute;
-  z-index: 100;
+  /* position: absolute;
+  z-index: 100; */
 }
 
 .icon-saoyisao {
@@ -10,7 +10,6 @@
   right: 50rpx;
   z-index: 100;
 }
-
 
 .prent {
   display: inline-block;
@@ -37,8 +36,16 @@
   vertical-align: top;
 }
 
+.index {
+  width: 10%;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  display: inline-block;
+}
+
 .title {
-  width: 70%;
+  width: 35%;
   font-size: 25rpx;
   text-align: left;
   display: inline-block;
@@ -46,7 +53,7 @@
 }
 
 .time {
-  width: 97%;
+  width: 65%;
   font-size: 25rpx;
   display: inline-block;
   text-align: left;
@@ -65,15 +72,13 @@
   font-size: 25rpx;
   display: inline-block;
   text-align: left;
-  margin-top: 10rpx;
 }
 
 .att {
   font-size: 25rpx;
   color: #a89d9d;
-  width: 35%;
+  width: 70%;
   display: inline-block;
-  margin-top: 10rpx;
 }
 
 .jiedan {
@@ -95,4 +100,34 @@
 .scan {
   width: 500rpx;
   height: 500rpx;
+}
+.tm {
+  height: 50px;
+  width: 100%;
+}
+
+.menu {
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  background-color: white;
+}
+
+.menu button {
+  display: inline-block;
+  width: 35%;
+  height: 30px;
+  background-color: #0ca6e2;
+  color: white;
+  line-height: 30px;
+  margin: 0 5%;
+  border-radius: 25px;
+  margin-top: 2%;
+}
+.sub{
+  width: 20%;
+  
 }

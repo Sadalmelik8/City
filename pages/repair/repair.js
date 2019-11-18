@@ -6,7 +6,7 @@ Page({
   data: {
     background: 'block',
     color: '#1bf4df',
-    url: 'http://39.106.134.196/miniprogram/?',
+    url: 'https://jxetyy.wytdev.com/miniprogram/?',
     items: [],
     jiedan: '',
     funcjiedan: 'jiedan',
@@ -15,6 +15,7 @@ Page({
     imgstyle: '',
     nums: 0,
     flag: 0,
+    menu:'',
   },
 
   /**
@@ -23,7 +24,8 @@ Page({
   onLoad: function(options) {
     if (options.flag) {
       this.setData({
-        flag: 1,
+        flag: options.flag,
+
       })
     }
   },
@@ -50,9 +52,148 @@ Page({
       success: function(res) {
         if (isNaN(res.data.ret[0].id)) {
           var num = res.data.ret.length;
-          if (num == that.data.items.length) {
-
+          if (app.globalData.type == 0) {
+            if (that.data.flag == 0) {
+              that.setData({
+                menu: 'block',
+              })
+            } else if (that.data.flag == 2){
+              that.setData({
+                menu: 'none',
+                nums: 0,
+              })
+              wx.showLoading({
+                title: '玩命加载中',
+              })
+              var i = '';
+              console.log(that.data.nums)
+              for (i = that.data.nums + i; i < num; i++) {
+                if ((i + 1) % 10 != 0) {
+                  if (res.data.ret[i].status == '已报修') {
+                    res.data.ret[i].amount = '接修';
+                    res.data.ret[i].rectime = '';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  } else if (res.data.ret[i].status == '已受理') {
+                    res.data.ret[i].amount = '已受理';
+                    res.data.ret[i].rectime = '';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  } else if (res.data.ret[i].status == '已维修') {
+                    res.data.ret[i].amount = '待验收';
+                    res.data.ret[i].rectime = 'over';
+                    res.data.ret[i].repairman = '#1bf4df';
+                  } else {
+                    res.data.ret[i].amount = '完成';
+                    res.data.ret[i].rectime = 'hi';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  }
+                  that.data.items.push(res.data.ret[i]);
+                  that.setData({
+                    background: 'none',
+                    items: that.data.items,
+                  })
+                  if (i + 1 == num) {
+                    that.setData({
+                      nums: that.data.nums + 10,
+                    })
+                  }
+                } else {
+                  if (res.data.ret[i].status == '已报修') {
+                    res.data.ret[i].amount = '接修';
+                    res.data.ret[i].rectime = '';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  } else if (res.data.ret[i].status == '已受理') {
+                    res.data.ret[i].amount = '已受理';
+                    res.data.ret[i].rectime = '';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  } else if (res.data.ret[i].status == '已维修') {
+                    res.data.ret[i].amount = '待验收';
+                    res.data.ret[i].rectime = 'over';
+                    res.data.ret[i].repairman = '#1bf4df';
+                  } else {
+                    res.data.ret[i].amount = '完成';
+                    res.data.ret[i].rectime = 'hi';
+                    res.data.ret[i].repairman = '#cfc9c9';
+                  }
+                  that.data.items.push(res.data.ret[i]);
+                  that.setData({
+                    nums: that.data.nums + 10,
+                    background: 'none',
+                    items: that.data.items,
+                  })
+                  break;
+                }
+              }
+            }
+            wx.showLoading({
+              title: '玩命加载中',
+            })
+            var i = '';
+            for (i = that.data.nums + i; i < num; i++) {
+              if ((i + 1) % 10 != 0) {
+                if (res.data.ret[i].status == '已报修') {
+                  res.data.ret[i].amount = '接修';
+                  res.data.ret[i].rectime = '';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                } else if (res.data.ret[i].status == '已受理') {
+                  res.data.ret[i].amount = '已受理';
+                  res.data.ret[i].rectime = '';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                } else if (res.data.ret[i].status == '已维修') {
+                  res.data.ret[i].amount = '待验收';
+                  res.data.ret[i].rectime = 'over';
+                  res.data.ret[i].repairman = '#1bf4df';
+                } else {
+                  res.data.ret[i].amount = '完成';
+                  res.data.ret[i].rectime = 'hi';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  background: 'none',
+                  items: that.data.items,
+                })
+                if (i + 1 == num) {
+                  that.setData({
+                    nums: that.data.nums + 10,
+                  })
+                }
+              } else {
+                if (res.data.ret[i].status == '已报修') {
+                  res.data.ret[i].amount = '接修';
+                  res.data.ret[i].rectime = '';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                } else if (res.data.ret[i].status == '已受理') {
+                  res.data.ret[i].amount = '已受理';
+                  res.data.ret[i].rectime = '';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                } else if (res.data.ret[i].status == '已维修') {
+                  res.data.ret[i].amount = '待验收';
+                  res.data.ret[i].rectime = 'over';
+                  res.data.ret[i].repairman = '#1bf4df';
+                } else {
+                  res.data.ret[i].amount = '完成';
+                  res.data.ret[i].rectime = 'hi';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                }
+                that.data.items.push(res.data.ret[i]);
+                that.setData({
+                  nums: that.data.nums + 10,
+                  background: 'none',
+                  items: that.data.items,
+                })
+                break;
+              }
+            }
           } else {
+            if (that.data.flag == 0) {
+              that.setData({
+                menu: 'block',
+              })
+            } else {
+              that.setData({
+                menu: 'none',
+              })
+            }
             wx.showLoading({
               title: '玩命加载中',
             })
@@ -66,10 +207,14 @@ Page({
                 } else if (res.data.ret[i].status == '已受理') {
                   res.data.ret[i].amount = '已受理';
                   res.data.ret[i].rectime = 'doit';
-                  res.data.ret[i].repairman = '#cfc9c9';
+                  res.data.ret[i].repairman = '#1bf4df';
                 } else if (res.data.ret[i].status == '已维修') {
                   res.data.ret[i].amount = '待验收';
-                  res.data.ret[i].rectime = 'over';
+                  res.data.ret[i].rectime = '';
+                  res.data.ret[i].repairman = '#cfc9c9';
+                } else {
+                  res.data.ret[i].amount = '完成';
+                  res.data.ret[i].rectime = 'hi';
                   res.data.ret[i].repairman = '#cfc9c9';
                 }
                 that.data.items.push(res.data.ret[i]);
@@ -77,6 +222,11 @@ Page({
                   background: 'none',
                   items: that.data.items,
                 })
+                if (i + 1 == num) {
+                  that.setData({
+                    nums: that.data.nums + 10,
+                  })
+                }
               } else {
                 if (res.data.ret[i].status == '已报修') {
                   res.data.ret[i].amount = '接修';
@@ -85,10 +235,10 @@ Page({
                 } else if (res.data.ret[i].status == '已受理') {
                   res.data.ret[i].amount = '已受理';
                   res.data.ret[i].rectime = 'doit';
-                  res.data.ret[i].repairman = '#cfc9c9';
+                  res.data.ret[i].repairman = '#1bf4df';
                 } else if (res.data.ret[i].status == '已维修') {
                   res.data.ret[i].amount = '待验收';
-                  res.data.ret[i].rectime = 'over';
+                  res.data.ret[i].rectime = '';
                   res.data.ret[i].repairman = '#cfc9c9';
                 } else {
                   res.data.ret[i].amount = '完成';
@@ -106,11 +256,19 @@ Page({
             }
           }
         } else {
+          if (that.data.flag == 0) {
+            that.setData({
+              menu: 'block',
+            })
+          } else {
+            that.setData({
+              menu: 'none',
+            })
+          }
           that.setData({
             background: 'block',
           })
         }
-        console.log(that.data.items);
         wx.hideLoading();
       }
     })
@@ -150,6 +308,7 @@ Page({
     })
     this.onReady();
     wx.hideLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -217,10 +376,14 @@ Page({
                     } else if (res.data.ret[i].status == '已受理') {
                       res.data.ret[i].amount = '已受理';
                       res.data.ret[i].rectime = 'doit';
-                      res.data.ret[i].repairman = '#cfc9c9';
+                      res.data.ret[i].repairman = '#1bf4df';
                     } else if (res.data.ret[i].status == '已维修') {
                       res.data.ret[i].amount = '待验收';
-                      res.data.ret[i].rectime = 'over';
+                      res.data.ret[i].rectime = '';
+                      res.data.ret[i].repairman = '#cfc9c9';
+                    } else {
+                      res.data.ret[i].amount = '完成';
+                      res.data.ret[i].rectime = 'hi';
                       res.data.ret[i].repairman = '#cfc9c9';
                     }
                     arr.push(res.data.ret[i]);
@@ -299,10 +462,14 @@ Page({
                     } else if (res.data.ret[i].status == '已受理') {
                       res.data.ret[i].amount = '已受理';
                       res.data.ret[i].rectime = 'doit';
-                      res.data.ret[i].repairman = '#cfc9c9';
+                      res.data.ret[i].repairman = '#1bf4df';
                     } else if (res.data.ret[i].status == '已维修') {
                       res.data.ret[i].amount = '待验收';
-                      res.data.ret[i].rectime = 'over';
+                      res.data.ret[i].rectime = '';
+                      res.data.ret[i].repairman = '#cfc9c9';
+                    } else {
+                      res.data.ret[i].amount = '完成';
+                      res.data.ret[i].rectime = 'hi';
                       res.data.ret[i].repairman = '#cfc9c9';
                     }
                     arr.push(res.data.ret[i]);
@@ -318,14 +485,9 @@ Page({
                 }
               }
             })
-        } else if (res.data.ret.id == 2) {
+        } else if (res.data.ret.id == 0) {
           wx.showToast({
             title: '你不是维修人员，无法变更',
-            icon: 'none',
-          })
-        } else {
-          wx.showToast({
-            title: '已被其他维修人员接单',
             icon: 'none',
           })
         }
@@ -376,15 +538,19 @@ Page({
                   for (var i = 0; i < num; i++) {
                     if (res.data.ret[i].status == '已报修') {
                       res.data.ret[i].amount = '接修';
-                      res.data.ret[i].rectime = 'jiedan';
-                      res.data.ret[i].repairman = '#1bf4df';
+                      res.data.ret[i].rectime = '';
+                      res.data.ret[i].repairman = '#cfc9c9';
                     } else if (res.data.ret[i].status == '已受理') {
                       res.data.ret[i].amount = '已受理';
-                      res.data.ret[i].rectime = 'doit';
+                      res.data.ret[i].rectime = '';
                       res.data.ret[i].repairman = '#cfc9c9';
                     } else if (res.data.ret[i].status == '已维修') {
                       res.data.ret[i].amount = '待验收';
                       res.data.ret[i].rectime = 'over';
+                      res.data.ret[i].repairman = '#1bf4df';
+                    } else {
+                      res.data.ret[i].amount = '完成';
+                      res.data.ret[i].rectime = 'hi';
                       res.data.ret[i].repairman = '#cfc9c9';
                     }
                     arr.push(res.data.ret[i]);
@@ -394,8 +560,10 @@ Page({
                     items: arr,
                   })
                 } else {
+                  var arr = [];
                   that.setData({
                     background: 'block',
+                    items: arr,
                   })
                 }
               }
@@ -409,10 +577,26 @@ Page({
       }
     })
   },
+  my: function() {
+    this.setData({
+      items: [],
+      flag: 2,
+      menu: 'none',
+    })
+    this.onReady();
+  },
   //报修
   scan: function() {
-    wx.navigateTo({
-      url: '../repair/repair-acc/repair-acc',
-    })
+    var app = getApp();
+    if (app.globalData.type == 0) {
+      wx.navigateTo({
+        url: '../repair/repair-acc/repair-acc',
+      })
+    } else {
+      wx.showToast({
+        title: '你没有权限报修',
+        icon: 'none',
+      })
+    }
   }
 })

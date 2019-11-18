@@ -8,7 +8,7 @@
   justify-content: space-between;
   padding: 70rpx 0;
   box-sizing: border-box;
-  background-color: #1bf4df;
+  background-color: #0ca6e2;
 }
 
 @font-face {
